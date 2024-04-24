@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float horsePower = 0f;
+    [SerializeField] private GameObject centerOfMass;
     private float turnSpeed = 45.0f;
     private float horizontalInput;
     private float verticalInput;
     private Rigidbody playerRb;
+   
 
     /* public Camera mainCamera;
      public Camera driverCamera;
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();   
+        playerRb.centerOfMass = centerOfMass.transform.position;  
     }
 
     void FixedUpdate()
