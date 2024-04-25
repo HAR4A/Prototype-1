@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         playerRb.centerOfMass = centerOfMass.transform.localPosition;
     }
 
+
     void FixedUpdate()
     {
 
