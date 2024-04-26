@@ -43,6 +43,10 @@ public class PlayerController : MonoBehaviour
         speed = Mathf.RoundToInt(playerRb.velocity.magnitude * 3.6f);
         speedometerText.SetText("Score: " + speed + " km/h");
 
+        rpm = Mathf.Round((speed % 30) * 40);
+        rpmText.SetText("RPM: " + rpm);
+
+
         /*if (Input.GetKeyDown(switchKey))
         {
             mainCamera.enabled = !mainCamera.enabled;
