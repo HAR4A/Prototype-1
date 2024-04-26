@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float horsePower = 0f;
     [SerializeField] float speed;
     [SerializeField] float rpm;
+    [SerializeField] int wheelsOnGround;
 
     private float turnSpeed = 45.0f;
     private float horizontalInput;
     private float verticalInput;
     private Rigidbody playerRb;
-    int wheelsOnGround;
-
+  
     [SerializeField] TextMeshProUGUI speedometerText;
     [SerializeField] TextMeshProUGUI rpmText;  
     [SerializeField] GameObject centerOfMass;
@@ -35,19 +35,19 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        horizontalInput = Input.GetAxis("Horizontal1");
+        verticalInput = Input.GetAxis("Vertical1");
+
         if (IsOnGround())
         {
-            horizontalInput = Input.GetAxis("Horizontal1");
-            verticalInput = Input.GetAxis("Vertical1");
-
             //move the vehicle forward
             playerRb.AddRelativeForce(Vector3.forward * horsePower * verticalInput);
             transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
-
-            speed = Mathf.RoundToInt(playerRb.velocity.magnitude * 3.6f);
+                      
+            speed = Mathf.RoundToInt(playerRb.velocity.magnitude * 3.6f);          //speedometer
             speedometerText.SetText("Score: " + speed + " km/h");
 
-            rpm = Mathf.Round((speed % 30) * 40);
+            rpm = Mathf.Round((speed % 30) * 40);                                  //tachometer
             rpmText.SetText("RPM: " + rpm);
 
 
@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
 
     bool IsOnGround()
     {
+        wheelsOnGround = 0;
         foreach(WheelCollider wheel in allWheels)
         {
             if (wheel.isGrounded)  //атрибут isGrounded постоянно обновляется и проверяет находятся ли "колёса" на земле
@@ -70,7 +71,7 @@ public class PlayerController : MonoBehaviour
             }          
         }
 
-        if (wheelsOnGround == 4)
+        if (wheelsOnGround == 2)     //при значении 4 машина не едет
         {
             return true;
         }
