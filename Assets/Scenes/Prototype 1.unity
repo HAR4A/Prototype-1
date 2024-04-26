@@ -1581,6 +1581,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9060020123985834710, guid: aea2a6cdcc9d7944090d528486ebaee1, type: 3}
+      propertyPath: rpmText
+      value: 
+      objectReference: {fileID: 1606910483}
+    - target: {fileID: 9060020123985834710, guid: aea2a6cdcc9d7944090d528486ebaee1, type: 3}
       propertyPath: horsePower
       value: 20000
       objectReference: {fileID: 0}
