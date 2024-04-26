@@ -6,14 +6,15 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float horsePower = 0f;
-   
+    [SerializeField] float speed;
+    [SerializeField] float rpm;
     private float turnSpeed = 45.0f;
     private float horizontalInput;
     private float verticalInput;
     private Rigidbody playerRb;
 
     [SerializeField] TextMeshProUGUI speedometerText;
-    [SerializeField] float speed;
+    [SerializeField] TextMeshProUGUI rpmText;  
     [SerializeField] GameObject centerOfMass;
 
     /* public Camera mainCamera;
